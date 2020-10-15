@@ -17,7 +17,7 @@ def get_ip():
         s.close()
     return SERVER_IP
 
-SERVER = get_ip()
+SERVER = get_ip() # this works for devices in the same network, to serve the internet use the public IP
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = '!DISCONNECT'
@@ -40,13 +40,6 @@ def handle_client(conn, addr):
 
             print(f'[{addr}] {msg}')
 
-            # message = RECEIVED_MESSAGE.encode(FORMAT)
-            # msg_length = len(message)
-            # send_length = str(msg_length).encode(FORMAT)
-            # send_length += b' ' * (HEADER - len(send_length))
-
-            # conn.send(send_length)
-            # conn.send(message)
             conn.send(RECEIVED_MESSAGE.encode(FORMAT))
 
     conn.close()
